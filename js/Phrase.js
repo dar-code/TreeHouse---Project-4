@@ -2,6 +2,8 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+//Added the Phrase class with the constructor method which has a phrase property
+
  class Phrase{
 
     constructor (phrase) {
@@ -9,30 +11,12 @@
         this.phrase = phrase.toLowerCase();
 
     }
-/**
-* Display phrase on game board
-*/
-        // addPhraseToDisplay() {
-
-        //     const ulPhrase = document.querySelector('#phrase ul');
-        //     let splitPhrase = this.phrase.split('');
-            
-        //     for(let i = 0; i < this.phrase.length; i++){
-        //         let liPhrase = document.createElement('LI');
-        //         liPhrase.innerHTML = splitPhrase[i];
-        //         ulPhrase.appendChild(liPhrase);
-
-        //         if (this.phrase[i] === ' ') {
-        //             liPhrase.classList = 'space';
-
-        //         } else if (this.phrase[i] === splitPhrase) {
-        //             liPhrase.classList = 'hide letter';
-        //         }
-
-        //     }
-        // }   
         
+//added the addPhraseToDisplay method
+
         addPhraseToDisplay() {
+
+//selected the UL
 
             const ulPhrase = document.querySelector('#phrase ul');
             let splitPhrase = this.phrase.split('');
