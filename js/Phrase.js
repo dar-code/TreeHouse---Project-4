@@ -29,23 +29,40 @@
                 liPhrase.innerHTML = selected;
                 
 
-                if (selected === ' ') {
-                    liPhrase.classList = 'space';
+                if (selected !== ' ') {
+                    liPhrase.className = `hide letter ${selected}`;
 
-                } else if (selected === splitPhrase) {
-                    liPhrase.classList = 'hide letter';
+                } else {
+                    liPhrase.classList.add(' ');
                 }
+
+                // if (selected === splitPhrase.indexOf(selected))
 
             });
         }   
 
+//This methods checks if selected letter is in the phrase. 
 
+        checkLetter(letter) {
+            if (this.phrase.includes(letter)) {
+             return true;
+            } else {
+             return false;
+                }
+        };
 
+//This method reveals the selected letter to te player.  
 
+        showMatchedLetter(letter) {
+            const showLetter = document.querySelectorAll('.phrase, li');
+            for (let i = 0; i < showLetter.length; i ++) {
+              if (showLetter[i].innerHTML === letter) {
+                showLetter[i].className = 'show'
+            }
 
+        };
 
-
-
+    }
 
 
     }

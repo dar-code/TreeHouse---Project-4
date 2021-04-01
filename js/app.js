@@ -20,6 +20,18 @@ startButton.addEventListener('click', e => {
 
 });
 
+//Creating the "keyboard" which captures all of the keys on the onscreen keyboard
+
+const keyboard = document.getElementById("qwerty");
+
+//Adding a click event listener which gives an output only when a respective button tag is interacted with on the onscreen keyboard
+
+keyboard.addEventListener("click", (key) => {
+    const buttonClicked = key.target;
+    if (buttonClicked.tagName === 'BUTTON') {
+    game.handleInteraction(key.target)
+    }
+})
 
 //TESTING
 
