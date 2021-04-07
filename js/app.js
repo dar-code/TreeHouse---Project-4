@@ -5,34 +5,47 @@
 
 //Creating the empty "game" variable and putting the Start button in the "startButton" variable
 
-let game;
 
 const startButton = document.getElementById('btn__reset');
+const buttonKeys = document.querySelectorAll("#qwerty button");
+
+let game;
 
 //Adding the click event listener to the Start button
 
 startButton.addEventListener('click', e => {
 
-//Instantiating the a new Game object and calling the startGame() method
+//instantiating the a new Game object and calling the startGame() method
 
     game = new Game();
     game.startGame();
 
 });
 
-//Creating the "keyboard" which captures all of the keys on the onscreen keyboard
+//creating the "keyboard" which captures all of the keys on the onscreen keyboard
 
 const keyboard = document.getElementById("qwerty");
 
-//Adding a click event listener which gives an output only when a respective button tag is interacted with on the onscreen keyboard
+//adding a click event listener which gives an output only when a respective button tag is interacted with on the onscreen keyboard
 
 keyboard.addEventListener("click", (key) => {
     const buttonClicked = key.target;
     if (buttonClicked.tagName === 'BUTTON') {
     game.handleInteraction(key.target)
     }
-})
+});
 
+
+//adding "keyup" event listener which connects physician keyboard to the onscreen one
+
+document.addEventListener("keyup", (e) => {
+
+    buttonKeys.forEach((button) => {
+      if (e.key === button.textContent && !button.disabled) {
+        game.handleInteraction(button);
+      }
+    });
+});
 //TESTING
 
 //Testing the classes added in otehr JS files:

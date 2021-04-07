@@ -39,7 +39,7 @@
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
 
-    }
+    };
 
 //checks if there are any hidden letters left. If none are left, the player won.   
 
@@ -63,7 +63,6 @@
             hearts.setAttribute("src", "images/lostHeart.png");
             if(this.missed === 5) {
                 this.gameOver();
-                this.resetGame();
             };
     };
 
@@ -77,58 +76,61 @@
         if(gameWon) {
             endMessage.textContent = "Congratulations! You know these songs really well!";
             startScreen.className = "win";
-            startBttn.textContent = "Try again";
+            startButton.textContent = "Play again";
             this.resetGame();
         } else {
             endMessage.textContent = "Sorry, better luck next time!";
             startScreen.className = "lose";
-            startBttn.textContent = "Try again";
+            startButton.textContent = "Try again";
             this.resetGame();
        };
     };
 
 
-//added handleInteraction method which handles what happens when the right letter is guessed vs. when wrong letter is guessed
+//added handleInteraction method which applies appropriate actions when the right letter is guessed vs. when wrong letter is guessed
 
-    handleInteraction(button) {
+    handleInteraction(button){
         let key = this.activePhrase.checkLetter(button.textContent);
                 
         if (key) {
             this.activePhrase.showMatchedLetter(button.textContent);
             button.classList = "chosen"
 
-        if (this.checkForWin()) {
-            this.gameOver(true);
-            this.resetGame();
-        }
-        } else {
-     
-        button.classList = "wrong"
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            };
+        } else {   
+            button.classList = "wrong"
             this.removeLife();
-            this.resetGame();
         };
- 
         button.disabled = true
     };
-
     
+//added reseGame method which resets the onscreen keyboard and heart images (as well as tries) 
     resetGame() {
-        let gameReset = document.getElementById("qwerty");
-        gameReset.forEach(songName => {
-            songName.remove()
-        });
 
-        let buttonReset = document.getElementById("qwerty");
-        buttonReset.forEach(button => {
-            button.disabled = false;
-            button.classList.remove('chosen');
-            button.classList.remove('wrong');
+        this.missed = 0;
+        document.querySelector("#phrase ul").innerHTML = ""; 
+    
+        const keysSelected = document.querySelectorAll(".keyrow button"); 
+        keysSelected.forEach((key) => {
+            key.className = "key";
+            key.disabled = false;
         });
-
-        let heartReset = document.document.getElementById("scoreboard");
-        heartReset.forEach(reset => {
-            reset.src = 'images/liveHeart.png'
+    
+        const restart = document.querySelectorAll(".loss");
+        restart.forEach((redo) => {
+            redo.className = "tries";
         });
-    };
-
-}
+    
+        const resetHearts = document.querySelectorAll(".tries img");
+        resetHearts.forEach((heart) => {
+            heart.src = "images/liveHeart.png";
+        });
+    
+        const reHide = document.querySelectorAll(".show");
+        reHide.forEach((fix) => {
+            fix.className = "hide";
+        });
+      };
+};
