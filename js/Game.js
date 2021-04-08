@@ -102,8 +102,9 @@
         } else {   
             button.classList = "wrong"
             this.removeLife();
+            button.disabled = true
         };
-        button.disabled = true
+        
     };
     
 //added reseGame method which resets the onscreen keyboard and heart images (as well as tries) 
