@@ -15,11 +15,11 @@
             
 //added Mogli's songs in the phrases property
 
-            new Phrase ('alaska'),
-            new Phrase ('earth'),
-            new Phrase ('wanderer'),
-            new Phrase ('bird'),
-            new Phrase ('road holes')];
+            new Phrase ('no hard feelings'),
+            new Phrase ('victory'),
+            new Phrase ('i wish i was'),
+            new Phrase ('shame'),
+            new Phrase ('swept away')];
         this.activePhrase = null;
     }
 
@@ -102,7 +102,6 @@
         } else {   
             button.classList = "wrong"
             this.removeLife();
-            button.disabled = true
         };
         
     };
