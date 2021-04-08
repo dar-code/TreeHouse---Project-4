@@ -91,6 +91,7 @@
 
     handleInteraction(button){
         let key = this.activePhrase.checkLetter(button.textContent);
+        button.disabled = true;
                 
         if (key) {
             this.activePhrase.showMatchedLetter(button.textContent);
